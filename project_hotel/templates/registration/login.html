@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="background-search">
+
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+
+        {% if form.errors %}
+        <p>Введен неверный логин или пароль</p>
+        {% endif %}
+
+        {% if next %}
+        {% if user.is_authenticated %}
+        <p>У вашего аккаунта нет доступа к данной странице. Для продолжения, авторизуйтесь с валидного аккаунта</p>
+        {% else %}
+        <p>Для продолжения, авторизуйтесь с валидного аккаунта</p>
+        {% endif %}
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+            <table>
+
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="login" />
+
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+
+        <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+    </div>
+</div>
+
+{% endblock %}

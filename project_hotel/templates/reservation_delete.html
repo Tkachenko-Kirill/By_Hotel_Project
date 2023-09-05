@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="background-search">
+    <table class="baza">
+        <tr><th class="th-baza"><h1 style="font-size: 30px; background-color: rgba(0,0,0,0.3);"> Удаление бронирования домика: </h1></th></tr>
+    </table>
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+        <p>Вы уверены что хоти удалить бронирование комнаты: {{ reservation.room }}?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Да, удалить</button>
+        </form>
+        <a href="{% url 'reservation-detail' reservation_id=reservation.id %}">Отмена</a>
+    </div>
+</div>
+
+{% endblock %}

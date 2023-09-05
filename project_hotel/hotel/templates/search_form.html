@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="background-search">
+    <table class="baza">
+        <tr><th class="th-baza"><h1 style="font-size: 30px; background-color: rgba(0,0,0,0.3);"> Поиск свободных домиков по дате: </h1></th></tr>
+    </table>
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+        <form action="" method="post">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Поиск" />
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="background-search">
+    <table class="baza">
+        <tr><th class="th-baza"><h1 style="font-size: 30px; background-color: rgba(0,0,0,0.3);"> Вы вышли из аккаунта! </h1></th></tr>
+    </table>
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+        <p>Вы вышли из аккаунта!</p>
+
+        <a href="{% url 'login'%}">Войти снова</a>
+    </div>
+</div>
+
+{% endblock %}

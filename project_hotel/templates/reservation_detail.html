@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="background-search">
+    <table class="baza">
+        <tr><th class="th-baza"><h1 style="font-size: 30px; background-color: rgba(0,0,0,0.3);"> Детали бронирования домика: </h1></th></tr>
+    </table>
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+
+        {% if reservation.is_active %}
+            <p>Бронирование {{ reservation.guest_name }} создано.</p>
+            <p>Комната: {{ reservation.room }}</p>
+            <p>Дата заезда: {{ reservation.check_in_date }}</p>
+            <p>Дата отъезда: {{ reservation.check_out_date }}</p>
+            <a href="{% url 'delete-reservation' reservation_id=reservation.id %}">Удалить</a>
+        {% else %}
+            <p>Бронирование {{ reservation.guest_name }} создано.</p>
+            <p>Комната: {{ reservation.room }}</p>
+            <p>Дата заезда: {{ reservation.check_in_date }}</p>
+            <p>Дата отъезда: {{ reservation.check_out_date }}</p>
+            <a href="">Удалить</a><p>Отменить бронь в данный момент можно только по телефону: +375(29)0000000</p>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

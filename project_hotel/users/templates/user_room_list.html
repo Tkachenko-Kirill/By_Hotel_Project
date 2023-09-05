@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="background-search">
+    <table class="baza">
+        <tr><th class="th-baza"><h1 style="font-size: 30px; background-color: rgba(0,0,0,0.3);"> Архив: </h1></th></tr>
+    </table>
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+
+        {% if favorites_products_list %}
+        <ul>
+
+            {% for reservation in room_list %}
+            <li>
+                <a href="{% url 'reserv-detail' reservation.pk %}">{{reservation.room}}</a> ({{ reservation.guest }})
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% else %}
+        <p>Забронированных комнат нет</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

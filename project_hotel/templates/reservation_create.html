@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="background-search">
+    <table class="baza">
+        <tr><th class="th-baza"><h1 style="font-size: 30px; background-color: rgba(0,0,0,0.3);"> Бронирование домика: </h1></th></tr>
+    </table>
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <tr>
+                <td>Вы бронируете: </td>
+                <td>{{ form.room }}</td>
+            </tr>
+            <tr>
+                <td>На имя: </td>
+                <td>{{ form.guest_name }}</td>
+            </tr>
+            <tr>
+                <td>С даты: </td>
+                <td>{{ form.check_in_date }}</td>
+            </tr>
+            <tr>
+                <td>По дату: </td>
+                <td>{{ form.check_out_date }}</td>
+            </tr>
+            <input type="submit" value="Забронировать">
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

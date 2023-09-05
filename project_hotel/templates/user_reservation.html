@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<div class="background-search">
+    <table class="baza">
+        <tr><th class="th-baza"><h1 style="font-size: 30px; background-color: rgba(0,0,0,0.3);"> Архив забронированных комнат: </h1></th></tr>
+    </table>
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+        <ul>
+            {% for reservation in reserv %}
+            {% if reservation.is_active %}
+            <li>
+                Комната: {{ reservation.room.title }} -  {{ reservation.room.price }} BYN сутки
+                <span class="" >{{ reservation.guest_name }}</span>
+                Актуальная бронь
+                <a href="{% url 'reservation-detail' reservation_id=reservation.id %}">Подробнее</a>
+            </li>
+            <hr>
+            {% else %}
+            <li>
+                Комната: {{ reservation.room.title }} -  {{ reservation.room.price }} BYN сутки
+                <span class="" >{{ reservation.guest_name }}</span>
+                Неактульная бронь
+                <a href="{% url 'reservation-detail' reservation_id=reservation.id %}">Подробнее</a>
+            </li>
+            <hr>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

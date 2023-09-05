@@ -1,0 +1,48 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<div class="background-search">
+    <table class="baza">
+        <tr><th class="th-baza"><h1 style="font-size: 30px; background-color: rgba(0,0,0,0.3);"> Свободные домики в интервале: с {{ date_in }} по {{ date_out }} </h1></th></tr>
+    </table>
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+
+        {% for room in available_rooms %}
+        <table>
+            <tr>
+                <th>
+                    <img src="{{ room.images.first.image.url }}" alt="{{ room.title }}" class="image-home" align="left">
+                </th>
+                <th style="width: 500px; text-align: left;">
+                    <a style="margin-left: 50px; font-size: 17px; " href="{{ room.get_absolute_url }}" class="button">{{ room.title }}</a>
+                    <br>
+                    <br>
+                    <ul style="font-size: 13px; ">
+                        <li>- домик номер: {{ room.number }}</li>
+                        <li>- спальных мест: {{ room.sleeping_places }}</li>
+                        <li>- Холодная и горячая вода, отопление.</li>
+                        <li>- Безбарьерная среда.</li>
+                    </ul>
+                </th>
+            </tr>
+            <tr style="height: 40px;">
+                <th>
+                    <h6>Стоимость – {{ room.price }} BYN сутки</h6>
+                </th>
+                <th>
+                    <a href="{{ room.get_absolute_url }}" class="button">ПОДРОБНЕЕ</a>
+                </th>
+            </tr>
+        </table>
+        <hr>
+        <br>
+        {% empty %}
+            <p class="list-group-item"> По запросу ничего не найдено </p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

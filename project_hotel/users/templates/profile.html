@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<div class="background-search">
+    <table class="baza">
+        <tr><th class="th-baza"><h1 style="font-size: 30px; background-color: rgba(0,0,0,0.3);"> Профиль пользователя {{ profile.username }} </h1></th></tr>
+    </table>
+</div>
+
+<div class="complex">
+    <div class="complex-1">
+        <div class="photo-profile">
+            {% if profile.profile_image %}
+            <img src="{{ profile.profile_image.url }}" alt = "{{ profile.user.username }}">
+            {% else %}
+            <img src="/static/media/profile.jpg" alt = "{{ profile.user.username }}">
+            {% endif %}
+        </div>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Сохранить</button>
+        </form>
+        <br>
+        <a href="{% url 'delete_profile' %}">Удалить профиль</a>
+        <br>
+        <a href="{% url 'user_reserv' %}">Архив</a>
+        <br>
+    </div>
+</div>
+{% endblock %}
